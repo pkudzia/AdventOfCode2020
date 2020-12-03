@@ -3,30 +3,33 @@
 
 fid = fopen('Puzzle3.rtf');
 C = textscan(fid, '%100s', 325);
-%get each line in the file and run WHILE loop until you read the line with
-%'cells_QC'
-% lets first import everything and make a matrix of the data
-for i= 1:323
-    for j = 1:31
-    dots = strfind(C{1,1}{i,1},'.');
-    amper = strfind(C{1,1}{i,1},'#');
 
-    if sum(dots==j)
-     outputMatrix(i,j) =0;
-    else
-     outputMatrix(i,j) =NaN;
-    end   
+% lets first import everything and make a matrix of the data
+
+for i= 1:323 % legnght is 323 
+    
+    for j = 1:31
+        dots = strfind(C{1,1}{i,1},'.');
+        amper = strfind(C{1,1}{i,1},'#');
+
+        if sum(dots==j)
+            outputMatrix(i,j) =0;
+        else
+            outputMatrix(i,j) =NaN;
+        end   
   
     end
 end
-% Alright now that we made the matrix lets copy it a bunch of times
 
-outputMatrix(324,:) = 1; % this will be the boardr 
+
+outputMatrix(324,:) = 1; % this will be the boarder so i can see when it ends
+
+% Alright now that we made the matrix lets copy it a bunch of times
 for i= 1:150 % Lets copy the matrix over and over 
     outputMatrix(:,end+1:(end+1+30)) =outputMatrix(:,1:31);
 end
 
-outputMatrix(324:500,:) = 1; % this will be the boardr 
+outputMatrix(324:500,:) = 1; % add more boarder , why not. 
 
 % Now find the pattern 
 % 3 right one down 
