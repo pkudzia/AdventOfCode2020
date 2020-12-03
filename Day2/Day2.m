@@ -6,7 +6,7 @@ clear all ; clc; close all;
 fid = fopen('Puzzle2.rtf');
 C = textscan(fid, '%100s', 5000);
 
-    row = 1;
+row = 1;
 for i= 1:3000
     
     str = C{1,1}{row,1};
@@ -15,31 +15,35 @@ for i= 1:3000
     number = str2num(newStr);
     Ndigits = dec2base(number,10) - '0'; 
     
-    if length(Ndigits) ==3
+    if length(Ndigits) ==3 % we need to check if there are more then 3 digits
+        
         FirstNumber = Ndigits(1);
         SecondNumber = Ndigits(1)+abs(numberDIFF);
-        
-         digitMatrix(i,1) = FirstNumber;
-         digitMatrix(i,2) = SecondNumber;
-         
-    elseif length(Ndigits)==4
 
-       str = sprintf('%d%d', Ndigits(1,1), Ndigits(1,2)); % If you want a string.
-       FirstNumber= str2double(str); % If you want a double.
-       str = sprintf('%d%d', Ndigits(1,3), Ndigits(1,4)); % If you want a string.
-       SecondNumber= str2double(str) % If you want a double.
-       
         digitMatrix(i,1) = FirstNumber;
         digitMatrix(i,2) = SecondNumber;
+         
+    elseif length(Ndigits)==4 % if there are four digits then two and two 
+
+        str = sprintf('%d%d', Ndigits(1,1), Ndigits(1,2)); 
+        FirstNumber= str2double(str); 
+        
+        str = sprintf('%d%d', Ndigits(1,3), Ndigits(1,4)); 
+        SecondNumber= str2double(str) % If you want a double.
+
+        digitMatrix(i,1) = FirstNumber;
+        digitMatrix(i,2) = SecondNumber;
+        
     else
-    digitMatrix(i,1) = Ndigits(1,1);
-    digitMatrix(i,2) = Ndigits(1,2);
+        
+        digitMatrix(i,1) = Ndigits(1,1);
+        digitMatrix(i,2) = Ndigits(1,2);
     end
     
 
     row = row+3;
     if row>3000
-        break
+        break % jump out 
     end
 
 end

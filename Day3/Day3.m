@@ -49,5 +49,3 @@ end
 % Slope 5 (42)
 %totla number of trees 
 Trees = sum(totalTree)%;
-
-%% Day 4

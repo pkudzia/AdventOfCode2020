@@ -1,6 +1,5 @@
 clear all ; clc; close all;
 %% Puzzle 1 
-if 0
 load('Puzzle1.mat')
 
 % Find entries that sum up to 2020
@@ -33,5 +32,4 @@ for i = 1:length(Puzzle1)
     end
     
     
-end
 end
