@@ -1,0 +1,97 @@
+clearvars;
+%%
+fid = fopen('Day5.rtf');
+C = textscan(fid, '%100s');
+
+
+for i = 1:length(C{1,1}) % sort everything 
+    
+        newStr = C{1,1}{i,1};
+        newStr =erase(newStr,'\');
+        newStr =erase(newStr,'}');
+    
+        letters{i,:} = regexp(newStr, '\D', 'match');
+
+end
+
+for i = 1:length(letters)
+    rowLeft = 0;
+    rowRight = 127;
+    letterTest =regexp('FBFBBFFRLR', '\D', 'match'); 
+    for j= 1:10
+       var = letterTest{1,j};
+       if j ==1
+           value = strfind(var,'F'); % Low half 
+           
+           if value==1
+               rowLeft = rowLeft;
+               rowRight = floor(rowRight/2);
+           else
+               rowLeft = ceil(rowRight/2);
+               rowRight = rowRight;   
+           end
+           
+       elseif j ==2
+            value = strfind(var,'F'); % Low half 
+           if value==1
+               rowLeft = rowLeft;
+               rowRight = floor(rowRight/2);
+           else
+               rowLeft = ceil(rowRight/2);
+               rowRight = rowRight;   
+           end
+           
+       elseif j ==3
+            value = strfind(var,'F'); % Low half 
+           if value==1
+               rowLeft = rowLeft;
+               rowRight = rowLeft+floor(rowRight/2);
+           else
+               rowLeft =  floor((rowRight-rowLeft)/2
+               rowRight = rowRight;   
+           end
+           
+       elseif j==4
+           value = strfind(var,'F'); % Low half 
+           if value==1
+               rowLeft = rowLeft;
+               rowRight = floor(rowRight/2);
+           else
+               rowLeft = ceil(rowRight/2);
+               rowRight = rowRight;   
+           end
+           
+       elseif j==5
+            value = strfind(var,'F'); % Low half 
+           if value==1
+               rowLeft = rowLeft;
+               rowRight = floor(rowRight/2);
+           else
+               rowLeft = ceil(rowRight/2);
+               rowRight = rowRight;   
+           end
+           
+       elseif j==6
+            value = strfind(var,'F'); % Low half 
+           if value==1
+               rowLeft = rowLeft;
+               rowRight = floor(rowRight/2);
+           else
+               rowLeft = ceil(rowRight/2);
+               rowRight = rowRight;   
+           end
+           
+       elseif j==7
+           a =1;
+       elseif j==8
+           
+       elseif j==9
+           
+       end
+        
+        
+    end
+    
+
+end
+
